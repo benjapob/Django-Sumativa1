@@ -18,8 +18,8 @@ from django.urls import path
 from App.views import agregar
 from App.views import eliminar
 from App.views import actualizar
-from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),

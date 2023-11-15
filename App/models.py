@@ -30,7 +30,7 @@ class Reserva(models.Model):
     donante = models.BooleanField()
     edad = models.IntegerField()
 
-    imagenCarnet = models.ImageField(upload_to = 'images/')
+    imagenCarnet = models.ImageField(upload_to = 'images/', blank = True, null = True)
     f_creacion = models.DateTimeField(auto_now_add = True)
     f_modificacion = models.DateTimeField(auto_now = True)
 
