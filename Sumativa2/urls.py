@@ -18,10 +18,12 @@ from django.urls import path
 from App.views import agregar
 from App.views import eliminar
 from App.views import actualizar
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', agregar),
     path('eliminar/<int:id>', eliminar),
     path('actualizar/<int:id>', actualizar),
-]
+]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
