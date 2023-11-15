@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
-<body>
+<body class="container">
     <div class="alert alert-info display-1 text-center">{{titulo}}</div>
 
     <form method="POST" enctype="multipart/form-data">
@@ -32,6 +32,7 @@
                 <tr>
                     <td>Nombre</td>
                     <td>Telefono</td>
+                    <td>Edad</td>
                     <td>Fecha Reserva</td>
                     <td>Hora Reserva</td>
                     <td>Website</td>
@@ -47,13 +48,15 @@
                 <tr>
                     <td>{{reserva.nombre}}</td>
                     <td>{{reserva.telefono}}</td>
+                    <td>{{reserva.edad}} años</td>
                     <td>{{reserva.fechaReserva}}</td>
                     <td>{{reserva.horaReserva}}</td>
                     <td>{{reserva.website}}</td>
                     <td>{{reserva.estadoReservaId}}</td>
                     <td>{{reserva.email}}</td>
                     <td><a class="btn btn-success btn-small" href="actualizar/{{reserva.idSolicitud}}"><i class="bi bi-pencil-fill"></i></a>
-                        <a class="btn btn-danger btn-small" href="eliminar/{{reserva.idSolicitud}}"><i class="bi bi-trash-fill"></i></a></td>
+                        <a class="btn btn-danger btn-small" href="eliminar/{{reserva.idSolicitud}}"><i class="bi bi-trash-fill"></i></a>
+                        <a class="btn btn-warning btn-small" href="pdf/{{reserva.idSolicitud}}">PDF</i></td>
                 </tr>
                 {%endfor%}
 
