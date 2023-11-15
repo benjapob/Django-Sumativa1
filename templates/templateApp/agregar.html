@@ -37,6 +37,7 @@
                     <td>Website</td>
                     <td>Estado</td>
                     <td>Email</td>
+                    <td>---</td>
                 </tr>
             </thead>
 
@@ -51,8 +52,8 @@
                     <td>{{reserva.website}}</td>
                     <td>{{reserva.estado}}</td>
                     <td>{{reserva.email}}</td>
-                    <td><a class="btn btn-success btn-small" href="actualizar/{{reserva.id}}"><i class="bi bi-pencil-fill"></i></a>
-                        <a class="btn btn-danger btn-small" href="eliminar/{{reserva.id}}"><i class="bi bi-trash-fill"></i></a></td>
+                    <td><a class="btn btn-success btn-small" href="actualizar/{{reserva.idSolicitud}}"><i class="bi bi-pencil-fill"></i></a>
+                        <a class="btn btn-danger btn-small" href="eliminar/{{reserva.idSolicitud}}"><i class="bi bi-trash-fill"></i></a></td>
                 </tr>
                 {%endfor%}
 

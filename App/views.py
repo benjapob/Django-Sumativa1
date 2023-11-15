@@ -17,12 +17,12 @@ def agregar(request):
     return render(request, 'templateApp/agregar.html', data)
 
 def eliminar(request,id):
-    reserva = Reserva.objects.get(id=id)
+    reserva = Reserva.objects.get(idSolicitud=id)
     reserva.delete()
     return redirect('/')
 
 def actualizar(request, id):
-    reserva = Reserva.objects.get(id=id)
+    reserva = Reserva.objects.get(idSolicitud=id)
     form = forms.ReservaRegistrar(instance=reserva)
     if (request.method == 'POST'):
         form = forms.ReservaRegistrar(request.POST, instance = reserva)
