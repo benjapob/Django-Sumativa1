@@ -13,6 +13,7 @@ class ReservaRegistrar(forms.ModelForm):
     horaReserva = forms.TimeField(widget = forms.widgets.TimeInput(attrs={'type':'time','format':'%H:%M'}),label='Hora Reserva')
     observaciones = forms.CharField(max_length = 50, widget=forms.Textarea(attrs={'rows':4,'cols':50}))
     cantidadPersonas = forms.IntegerField(label='Cantidad de personas')
+    imagenCarnet = forms.ImageField(label="Archivo a Subir",required=False)
 
     #Estado reserva
     estadoReservaId = forms.ModelChoiceField(queryset=EstadoReserva.objects.all(), label='Estado Reserva')

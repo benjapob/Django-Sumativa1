@@ -30,5 +30,9 @@ class Reserva(models.Model):
     donante = models.BooleanField()
     edad = models.IntegerField()
 
+    imagenCarnet = models.ImageField()
+    f_creacion = models.DateTimeField(auto_now_add = True)
+    f_modificacion = models.DateTimeField(auto_now = True)
+
     estadoReservaId = models.ForeignKey(EstadoReserva, null = True, blank = False, on_delete = models.RESTRICT)
     tipoSolicitudId = models.ForeignKey(TipoReserva, null = True, blank = False, on_delete = models.RESTRICT)
