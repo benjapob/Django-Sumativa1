@@ -14,7 +14,7 @@ class ReservaRegistrar(forms.ModelForm):
     observaciones = forms.CharField(max_length=50, widget=forms.Textarea(attrs={"rows": 4, "cols": 50}))
     cantidadPersonas = forms.IntegerField(label="Cantidad de personas")
     imagenCarnet = forms.ImageField(label="Archivo a Subir", required=False)
-
+    nombre = forms.CharField(label="Nombre Completo")
     edad = forms.DateField(label="Fecha de nacimiento",widget=forms.widgets.DateInput(attrs={"type": "date"}),)
     cantidadPersonas = forms.IntegerField(label="Cantidad de hermanos")
 

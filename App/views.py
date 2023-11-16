@@ -35,7 +35,7 @@ def pdf(request, id):
 
     lines = ["Reserva Nº"+str(id),
              "",
-             "Nombre: "+reserva.nombre, 
+             "Nombre Completo: "+reserva.nombre, 
              "Edad: "+str(reserva.edad),
              "Telefono: "+reserva.telefono,
              "Fecha de Reserva: "+str(reserva.fechaReserva),
