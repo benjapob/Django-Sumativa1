@@ -5,6 +5,10 @@ import io
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+from django.conf import settings
+from PIL import Image
+from reportlab.lib.utils import ImageReader
 
 
 # Create your views here.
@@ -15,7 +19,9 @@ def pdf(request, id):
     buffer = io.BytesIO()
 
     # Create the PDF object, using the buffer as its "file."
-    p = canvas.Canvas(buffer, bottomup=0)
+    p = canvas.Canvas(buffer, bottomup=0, pagesize=letter)
+    im = Image.open(str(settings.BASE_DIR) + reserva.imagenCarnet.url).transpose(Image.FLIP_TOP_BOTTOM)
+    p.drawImage(ImageReader(im), inch, 250, width=120, height=200, preserveAspectRatio=True, mask='auto')
 
     textob = p.beginText()
     textob.setTextOrigin(inch, inch)
@@ -40,7 +46,9 @@ def pdf(request, id):
              "Email: "+reserva.email,
              "Donante: "+donante,
              "Estado Reserva: "+str(reserva.estadoReservaId),
-             "Tipo Solicitud: "+str(reserva.tipoSolicitudId)
+             "Tipo Solicitud: "+str(reserva.tipoSolicitudId),
+             "",
+             "Imagen Carnet: "
              ]
     for line in lines:
         textob.textLine(line)

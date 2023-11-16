@@ -1,5 +1,5 @@
 from django.db import models
-
+from django_resized import ResizedImageField
 # Create your models here.
 
 class EstadoReserva(models.Model):
@@ -30,7 +30,7 @@ class Reserva(models.Model):
     donante = models.BooleanField()
     edad = models.IntegerField()
 
-    imagenCarnet = models.ImageField(upload_to = 'images/', blank = True, null = True)
+    imagenCarnet = ResizedImageField(size=[500, 300], upload_to = 'images/', blank = True, null = True)
     f_creacion = models.DateTimeField(auto_now_add = True)
     f_modificacion = models.DateTimeField(auto_now = True)
 
