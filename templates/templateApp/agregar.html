@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {%load static%}
+{% load qr_code %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -56,7 +57,9 @@
                     <td>{{reserva.email}}</td>
                     <td><a class="btn btn-success btn-small" href="actualizar/{{reserva.idSolicitud}}"><i class="bi bi-pencil-fill"></i></a>
                         <a class="btn btn-danger btn-small" href="eliminar/{{reserva.idSolicitud}}"><i class="bi bi-trash-fill"></i></a>
-                        <a class="btn btn-warning btn-small" href="pdf/{{reserva.idSolicitud}}">PDF</i></td>
+                        <a class="btn btn-warning btn-small" href="pdf/{{reserva.idSolicitud}}">PDF</a>
+                        <a class="btn btn-warning btn-small" target="_blank" href={{reserva.qr_code.url}}>QR</a>
+                        <a class="btn btn-warning btn-small" href=qr/{{reserva.idSolicitud}}>QR<i class="bi bi-trash-fill"></i></a></td>
                 </tr>
                 {%endfor%}
 
