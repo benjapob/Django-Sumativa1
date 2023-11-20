@@ -9,6 +9,7 @@ from reportlab.lib.pagesizes import letter
 from django.conf import settings
 from PIL import Image
 from reportlab.lib.utils import ImageReader
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -96,6 +97,26 @@ def agregar(request):
         form = forms.ReservaRegistrar(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            if form.cleaned_data['donante'] == 0:
+                res = "No"
+            else:
+                res = "Si"
+            send_mail(
+                subject='Reserva',
+                message=("Nombre Completo: "+form.cleaned_data['nombre']+
+             "\nEdad: "+str(form.cleaned_data['edad'])+
+             "\nTelefono: "+form.cleaned_data['telefono']+
+             "\nFecha de Reserva: "+str(form.cleaned_data['fechaReserva'])+
+             "\nHora de Reserva: "+str(form.cleaned_data['horaReserva'])+
+             "\nCantidad de Hermanos: "+str(form.cleaned_data['cantidadPersonas'])+
+             "\nObservaciones: "+ form.cleaned_data['observaciones']+
+             "\nWebsite: "+form.cleaned_data['website']+
+             "\nEmail: "+form.cleaned_data['email']+
+             "\nDonante: "+res+
+             "\nEstado Reserva: "+str(form.cleaned_data['estadoReservaId'])+
+             "\nTipo Solicitud: "+str(form.cleaned_data['tipoSolicitudId'])),
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[form.cleaned_data['email']])
             form = forms.ReservaRegistrar()
     data = {'form': form, 'reservas': reservas, 'titulo': 'ADMINISTRACIÓN DE RESERVAS'}
     return render(request, 'templateApp/agregar.html', data)
