@@ -47,7 +47,6 @@ class Reserva(models.Model):
     tipoSolicitudId = models.ForeignKey(TipoReserva, null = True, blank = False, on_delete = models.RESTRICT)
 
     def save(self, *args, **kwargs):
-        
         if self.donante == 0:
             res = "No"
         else:
